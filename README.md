@@ -24,7 +24,18 @@ Para iniciar o teste, faça um fork deste repositório, crie uma branch com o se
 
 # Instruções para o desafio:
 A calculadora deve fazer as quatro operações básicas. O botão C apaga o número que está no visor, AC apaga o visor e o valor na memória.
+
 Comece pelo HTML, depois faça o CSS e só então o JS. O resultado será avaliado pelo funcionamento de cada parte.
+
+Deve ser feito usando HTML, CSS e JS puros, não adicionar bibliotecas.
+
+Para rodar, após baixar o código, abra o terminal e execute os seguintes comandos:
+
+```bash
+npm install
+npm run start
+```
+
 
 #### Boa sorte! 🚀
 
