@@ -12,12 +12,19 @@ class JSCalculator extends HTMLElement {
     this.btnEqual = this.querySelector('.btn-equal');
 
     this.firstValue = '';
-    this.operador = '';
+    this.operator = '';
 
     this.init();
   }
 
   init() {
+    this.clickNumbers();
+    this.selectOperation();
+    this.displayResult();
+    this.clearValues();
+  }
+
+  clickNumbers() {
     for (let i = 0; i < this.btnNumbers.length; i++) {
         this.btnNumbers[i].addEventListener('click', () => {
         if (this.result.textContent == '0') {
@@ -26,36 +33,42 @@ class JSCalculator extends HTMLElement {
         this.result.append(this.btnNumbers[i].textContent);
       })
     }
-  
+  }
+
+  selectOperation() {
     for (let i = 0; i < this.btnOperations.length; i++) {
       this.btnOperations[i].addEventListener('click', () => {
         if (this.btnOperations[i].textContent == '÷' ) {
-          this.operador = '/';
+          this.operator = '/';
         } else if (this.btnOperations[i].textContent == '×') {
-          this.operador = '*';
+          this.operator = '*';
         } else if (this.btnOperations[i].textContent == '-') {
-          this.operador = '-';
+          this.operator = '-';
         } else if (this.btnOperations[i].textContent == '+') {
-          this.operador = '+';
+          this.operator = '+';
         }
         this.firstValue = parseFloat(this.result.textContent);
         this.result.innerHTML = '';
       })
     }
+  }
 
+  displayResult() {
     this.btnEqual.addEventListener('click', () => {
-      if (this.operador == '/' ) {
+      if (this.operator == '/' ) {
         this.result.innerHTML = this.firstValue / parseFloat(this.result.textContent);
-      } else if (this.operador == '*' ) {
+      } else if (this.operator == '*' ) {
         this.result.innerHTML = this.firstValue * parseFloat(this.result.textContent);
-      } else if (this.operador == '-' ) {
+      } else if (this.operator == '-' ) {
         this.result.innerHTML = this.firstValue - parseFloat(this.result.textContent);
-      } else if (this.operador == '+' ) {
+      } else if (this.operator == '+' ) {
         this.result.innerHTML = this.firstValue + parseFloat(this.result.textContent);
       }
      })
+  }
 
-     this.btnClearC.addEventListener('click', () => {
+  clearValues() {
+    this.btnClearC.addEventListener('click', () => {
       this.result.innerHTML = '0';
      })
      
